@@ -9,7 +9,7 @@ public class BuildISOMessage {
  
 	public static void main(String[] args) throws IOException, ISOException {
 		// Create Packager based on XML that contain DE type
-		GenericPackager packager = new GenericPackager("basic.xml");
+		GenericPackager packager = new GenericPackager("default.xml");
  
 		// Create ISO Message
 		ISOMsg isoMsg = new ISOMsg();

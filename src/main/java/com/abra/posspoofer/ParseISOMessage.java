@@ -9,7 +9,7 @@ public class ParseISOMessage {
  
 	public static void main(String[] args) throws IOException, ISOException {
 		// Create Packager based on XML that contain DE type
-		GenericPackager packager = new GenericPackager("basic.xml");
+		GenericPackager packager = new GenericPackager("default.xml");
  
 		// Print Input Data
 		String data = "0200B2200000001000000000000000800000201234000000010000011072218012345606A5DFGR021ABCDEFGHIJ 1234567890";
