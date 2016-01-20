@@ -3,6 +3,9 @@ package com.abra.posspoofer;
 import java.io.IOException;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOUtil;
+import org.jpos.iso.channel.NACChannel;
+import org.jpos.iso.ISOHeader;
 import org.jpos.iso.packager.GenericPackager;
  
 public class BuildISOMessage {
@@ -35,8 +38,13 @@ public class BuildISOMessage {
 		byte[] data = isoMsg.pack();
 		System.out.println("RESULT : " + new String(data));
 		
+		// Create TPDU header
+		byte[] isoHeader = ISOUtil.hex2byte("6001208100");
+		
 		// Send to endpoint
 		// test: 203.131.75.230:8012
+		NACChannel nc = new NACChannel("203.131.75.230", 8012, packager, isoHeader);
+		nc.connect();
 	}
  
 	private static void logISOMsg(ISOMsg msg) {
