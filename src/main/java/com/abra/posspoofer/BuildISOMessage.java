@@ -7,12 +7,19 @@ import org.jpos.iso.ISOUtil;
 import org.jpos.iso.channel.NACChannel;
 import org.jpos.iso.ISOHeader;
 import org.jpos.iso.packager.GenericPackager;
+import org.jpos.util.Logger;
+import org.jpos.util.RotateLogListener;
+import org.jpos.util.SimpleLogListener;
  
 public class BuildISOMessage {
  
 	public static void main(String[] args) throws IOException, ISOException {
 		// Create Packager based on XML that contain DE type
 		GenericPackager packager = new GenericPackager("ub_request.xml");
+		
+		// Create logger to dump channel output
+		Logger logger = new Logger();
+		logger.addListener(new SimpleLogListener (System.out)); 
  
 		// Create ISO Message 
 		// (Unionbank Debit Message specs)
@@ -44,7 +51,9 @@ public class BuildISOMessage {
 		// Send to endpoint
 		// test: 203.131.75.230:8012
 		NACChannel nc = new NACChannel("203.131.75.230", 8012, packager, isoHeader);
+		nc.setLogger(logger, null); 
 		nc.connect();
+		nc.send(data);
 	}
  
 	private static void logISOMsg(ISOMsg msg) {
