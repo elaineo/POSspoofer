@@ -9,18 +9,24 @@ public class BuildISOMessage {
  
 	public static void main(String[] args) throws IOException, ISOException {
 		// Create Packager based on XML that contain DE type
-		GenericPackager packager = new GenericPackager("default.xml");
+		GenericPackager packager = new GenericPackager("ub_request.xml");
  
-		// Create ISO Message
+		// Create ISO Message 
+		// (Unionbank Debit Message specs)
 		ISOMsg isoMsg = new ISOMsg();
 		isoMsg.setPackager(packager);
 		isoMsg.setMTI("0200");
-		isoMsg.set(3, "201234");
+		isoMsg.set(3, "000001");
 		isoMsg.set(4, "10000");
-		isoMsg.set(7, "110722180");
+		isoMsg.set(7, "0120221800");
 		isoMsg.set(11, "123456");
-		isoMsg.set(44, "A5DFGR");
-		isoMsg.set(105, "ABCDEFGHIJ 1234567890");
+		isoMsg.set(12, "221800");
+		isoMsg.set(22, "021");
+		isoMsg.set(24, "827");
+		isoMsg.set(25, "00");
+		isoMsg.set(35, "");
+		isoMsg.set(41, "ELAINEOU");
+		isoMsg.set(42, "ABRAGLOBAL01234");
  
 		// print the DE list
 		logISOMsg(isoMsg);
@@ -28,6 +34,9 @@ public class BuildISOMessage {
 		// Get and print the output result
 		byte[] data = isoMsg.pack();
 		System.out.println("RESULT : " + new String(data));
+		
+		// Send to endpoint
+		// test: 203.131.75.230:8012
 	}
  
 	private static void logISOMsg(ISOMsg msg) {
