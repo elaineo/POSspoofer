@@ -54,6 +54,9 @@ public class BuildISOMessage {
 		nc.setLogger(logger, null); 
 		nc.connect();
 		nc.send(data);
+		ISOMsg r = nc.receive();
+		logISOMsg(r);
+		nc.send(data);
 	}
  
 	private static void logISOMsg(ISOMsg msg) {
