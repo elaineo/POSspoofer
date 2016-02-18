@@ -13,7 +13,7 @@
       class="org.jpos.iso.IFA_BITMAP"/>
   <isofield
       id="2"
-      length="19"
+      length="16"
       name="PRIMARY ACCOUNT NUMBER"
       class="org.jpos.iso.IFA_NUMERIC"/>
   <isofield
