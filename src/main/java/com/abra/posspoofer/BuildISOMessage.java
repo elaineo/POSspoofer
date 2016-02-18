@@ -14,6 +14,17 @@ import org.jpos.util.Logger;
 import org.jpos.util.SimpleLogListener;
  
 public class BuildISOMessage {
+	
+	final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+	public static String bytesToHex(byte[] bytes) {
+	    char[] hexChars = new char[bytes.length * 2];
+	    for ( int j = 0; j < bytes.length; j++ ) {
+	        int v = bytes[j] & 0xFF;
+	        hexChars[j * 2] = hexArray[v >>> 4];
+	        hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+	    }
+	    return new String(hexChars);
+	}
  
 	public static void main(String[] args) throws IOException, ISOException {
 		// Create Packager based on XML that contain DE type
@@ -24,12 +35,12 @@ public class BuildISOMessage {
 		logger.addListener(new SimpleLogListener (System.out)); 
 		
 		HashMap<String, String> transaction = new HashMap<String, String>();
-		transaction.put("2","4404520100000034");
-		transaction.put("3","001000");
+		transaction.put("2","2C04340100000022");
+		transaction.put("3","000A00");
 		transaction.put("22","021");
 		transaction.put("24","827");
 		transaction.put("25","00");
-		transaction.put("35","0"); // FIXME
+		//transaction.put("35","0"); // FIXME
 		
 		
 		Set set = transaction.entrySet();
@@ -55,13 +66,13 @@ public class BuildISOMessage {
 		//isoMsg.set(12, "221800");
 		//isoMsg.set(13, "0216");
     	
-		isoMsg.set(2,"4404520100000034");
+		isoMsg.set(2,"164404520100000034");
 		isoMsg.set(3,"001000");
 		isoMsg.set(4, "10000");
-		isoMsg.set(7, "0217221800");
-		isoMsg.set(11, "123456");
-		isoMsg.set(12, "221800");
-		isoMsg.set(13, "0216");
+		isoMsg.set(7, "0211161200");
+		isoMsg.set(11, "000001");
+		isoMsg.set(12, "161200");
+		isoMsg.set(13, "0210");
 		isoMsg.set(22,"021");
 		isoMsg.set(24,"827");
 		isoMsg.set(25,"00");
@@ -82,7 +93,7 @@ public class BuildISOMessage {
  
 		// Get and print the output result
 		byte[] data = isoMsg.pack();
-		System.out.println("RESULT : " + new String(data));
+		System.out.println("RESULT : " + bytesToHex(data));
 		
 		// Create TPDU header
 		byte[] isoHeader = ISOUtil.hex2byte("6001208100");
