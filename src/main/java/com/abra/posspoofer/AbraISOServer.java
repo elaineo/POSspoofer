@@ -15,7 +15,7 @@ import org.jpos.util.Logger;
 import org.jpos.util.SimpleLogListener; 
 
 public class AbraISOServer implements ISORequestListener { 
-	public static final String UB_SERVER = "203.131.75.230";
+	public static final String UB_SERVER = "202.14.87.10";
 	public static final Integer UB_PORT = 8012;
 	
     public boolean process (ISOSource source, ISOMsg m) { 

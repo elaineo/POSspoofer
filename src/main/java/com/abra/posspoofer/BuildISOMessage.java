@@ -5,10 +5,8 @@ import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOUtil;
 import org.jpos.iso.channel.NACChannel;
-import org.jpos.iso.ISOHeader;
 import org.jpos.iso.packager.GenericPackager;
 import org.jpos.util.Logger;
-import org.jpos.util.RotateLogListener;
 import org.jpos.util.SimpleLogListener;
  
 public class BuildISOMessage {
@@ -26,7 +24,8 @@ public class BuildISOMessage {
 		ISOMsg isoMsg = new ISOMsg();
 		isoMsg.setPackager(packager);
 		isoMsg.setMTI("0200");
-		isoMsg.set(3, "000001");
+		isoMsg.set(2, "4404520100000034");
+		isoMsg.set(3, "001000");
 		isoMsg.set(4, "10000");
 		isoMsg.set(7, "0120221800");
 		isoMsg.set(11, "123456");
@@ -34,7 +33,7 @@ public class BuildISOMessage {
 		isoMsg.set(22, "021");
 		isoMsg.set(24, "827");
 		isoMsg.set(25, "00");
-		isoMsg.set(35, "");
+		//isoMsg.set(35, "");
 		isoMsg.set(41, "ELAINEOU");
 		isoMsg.set(42, "ABRAGLOBAL01234");
  
@@ -50,10 +49,10 @@ public class BuildISOMessage {
 		
 		// Send to endpoint
 		// test: 203.131.75.230:8012
-		NACChannel nc = new NACChannel("203.131.75.230", 8012, packager, isoHeader);
+		NACChannel nc = new NACChannel("202.14.87.10", 8012, packager, isoHeader);
 		nc.setLogger(logger, null); 
 		nc.connect();
-		nc.send(data);
+		nc.send(isoMsg);
 		ISOMsg r = nc.receive();
 		logISOMsg(r);
 		nc.send(data);
