@@ -7,13 +7,8 @@
       name="MESSAGE TYPE INDICATOR"
       class="org.jpos.iso.IFA_NUMERIC"/>
   <isofield
-      id="1"
-      length="64"
-      name="BIT MAP"
-      class="org.jpos.iso.IFA_BITMAP"/>
-  <isofield
       id="2"
-      length="19"
+      length="16"
       name="PRIMARY ACCOUNT NUMBER"
       class="org.jpos.iso.IFA_NUMERIC"/>
   <isofield
@@ -27,34 +22,9 @@
       name="AMOUNT, TRANSACTION"
       class="org.jpos.iso.IFA_NUMERIC"/>
   <isofield
-      id="5"
-      length="12"
-      name="AMOUNT, SETTLEMENT"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
-      id="6"
-      length="12"
-      name="AMOUNT, CARDHOLDER BILLING"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
       id="7"
       length="10"
       name="TRANSMISSION DATE AND TIME"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
-      id="8"
-      length="8"
-      name="AMOUNT, CARDHOLDER BILLING FEE"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
-      id="9"
-      length="8"
-      name="CONVERSION RATE, SETTLEMENT"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
-      id="10"
-      length="8"
-      name="CONVERSION RATE, CARDHOLDER BILLING"
       class="org.jpos.iso.IFA_NUMERIC"/>
   <isofield
       id="11"

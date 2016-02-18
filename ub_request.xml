@@ -65,22 +65,7 @@
       id="35"
       length="40"
       name="TRACK 2 DATA"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
-      id="37"
-      length="12"
-      name="RETRIEVAL REFERENCE NUMBER"
-      class="org.jpos.iso.IFA_LLCHAR"/>
-  <isofield
-      id="38"
-      length="6"
-      name="AUTHORIZATION IDENTIFICATION RESPONSE"
-      class="org.jpos.iso.IFA_LCHAR"/>
-  <isofield
-      id="39"
-      length="2"
-      name="RESPONSE CODE"
-      class="org.jpos.iso.IFA_LCHAR"/>
+      class="org.jpos.iso.IFA_LLNUM"/>
   <isofield
       id="41"
       length="8"
